@@ -246,6 +246,7 @@ COPY docker-unified/supervisord/supervisord.conf /etc/supervisor/supervisord.con
 RUN rm -f /etc/supervisord.conf
 
 # Set up nginx
+RUN setcap 'cap_net_bind_service=+ep' /usr/sbin/nginx
 COPY docker-unified/nginx/nginx.conf /etc/nginx
 COPY docker-unified/nginx/proxy.conf /etc/nginx
 COPY docker-unified/nginx/mime.types /etc/nginx
